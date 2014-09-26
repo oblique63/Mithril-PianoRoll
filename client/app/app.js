@@ -4,6 +4,7 @@ var app = {};
 
 app.controller = function() {
     var self = this;
+
     this.pianoRoll = new PianoRoll();
     this.player = new SimpleSynthPlayer();
     this.volume = m.prop(90);
@@ -13,7 +14,6 @@ app.controller = function() {
 
         midi.read(function() {
             self.pianoRoll.loadMidi(midi.tracks);
-            //console.log(JSON.stringify(midi.tracks, null, 2));
             m.redraw.strategy('diff');
             m.redraw(true);
         });
@@ -28,13 +28,13 @@ app.controller = function() {
     };
 };
 
-app.view = function(ctrl) {
+app.view = function(controller) {
     return [
-        makeTransport(ctrl),
-        makeFileDropper(ctrl),
+        makeTransport(controller),
+        makeFileDropper(controller),
         m('#main', [
-            makePianoRoll(ctrl),
-            makeMidiEditor(ctrl)
+            makePianoRoll(controller),
+            makeMidiEditor(controller)
         ])
     ];
 };
