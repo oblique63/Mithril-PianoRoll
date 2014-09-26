@@ -20,11 +20,16 @@ app.controller = function() {
     });
 
     this.play = function() {
-        self.player.play(
-            self.pianoRoll.track().notes,
-            self.pianoRoll.tempo(),
-            self.volume()/100
-        );
+        if (!self.pianoRoll.isEmpty()) {
+            self.player.play(
+                self.pianoRoll.track().notes,
+                self.pianoRoll.tempo(),
+                self.volume() / 100
+            );
+        }
+        else {
+            console.log("WARNING: No MIDI Data Loaded");
+        }
     };
 };
 
@@ -39,5 +44,6 @@ app.view = function(controller) {
     ];
 };
 
-var ctrl = new app.controller();
 m.module(document.getElementById("app"), app);
+
+var ctrl = new app.controller();

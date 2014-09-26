@@ -99,6 +99,6 @@ var makeMeasure = function (ctrl) {
 var makeMidiEditor = function(ctrl) {
     return m('midi_editor',[
         m('layout', makeOctaves(ctrl, makeRows)),
-        m('overlay', m('div'))
+        m('overlay')
     ]);
 };

@@ -15,6 +15,10 @@ var PianoRoll = function(midiData) {
     this.midiData = m.prop(midiData || {});
     this.track = m.prop({});
 
+    this.isEmpty = function () {
+        return Object.keys(this.midiData()).length === 0;
+    };
+
     this.loadMidi = function(midi) {
         self.midiData(midi);
         self.track( Track(midi[0]) );
