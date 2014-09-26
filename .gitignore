@@ -1,0 +1,8 @@
+# Floobits nonsense
+.floo
+.flooignore
+
+# Editor nonsense
+.idea
+*.swp
+*~

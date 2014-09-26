@@ -1,0 +1,82 @@
+body {
+    background-color: #406079;
+    overflow: hidden;
+}
+
+transport {
+    display: block;
+    overflow: hidden;
+    padding: 10px;
+    background-color: #eee;
+}
+transport .play {
+    float: left;
+    padding: 13px;
+    margin-right: 20px;
+}
+transport .input {
+    float: left;
+    margin-right: 15px;
+    margin-top: 10px;
+}
+transport .input input {
+    margin-left: 7px;
+}
+transport .tempo {
+    width: 4em;
+}
+
+.drag_drop_helper {
+    background-color: gold;
+    text-align: center;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+.drag_drop_helper.not_supported {
+    background-color: crimson;
+    color: white;
+}
+
+.drop_indicator {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,255,255,0.75);
+    z-index: 100;
+}
+
+.drop_indicator div {
+    color: darkblue;
+    font-size: 72px;
+    font-weight: bold;
+    text-align: center;
+    margin: 30px;
+    border: 20px dashed darkblue;
+    border-radius: 20px;
+    height: 90%;
+
+    /* Vertically center the text: */
+
+    /* Internet Explorer 10 */
+    display:-ms-flexbox;
+    -ms-flex-pack:center;
+    -ms-flex-align:center;
+
+    /* Firefox */
+    display:-moz-box;
+    -moz-box-pack:center;
+    -moz-box-align:center;
+
+    /* Safari, Opera, and Chrome */
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+
+    /* W3C */
+    display:box;
+    box-pack:center;
+    box-align:center;
+}
