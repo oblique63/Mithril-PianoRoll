@@ -83,7 +83,7 @@ var makeRows = function(ctrl, octave) {
                 return makeMeasure(ctrl);
             })
         );
-    });
+    }).reverse();
 };
 
 var makeMeasure = function (ctrl) {
@@ -96,9 +96,48 @@ var makeMeasure = function (ctrl) {
     );
 };
 
+var makeMidiNotes = function (ctrl) {
+    if (ctrl.pianoRoll.isEmpty())
+        return '';
+
+    var beatWidth = ctrl.pianoRoll.beatWidth();
+    var noteHeight = ctrl.pianoRoll.rowHeight(); // +2px for border
+    var octaveHeight = ((noteHeight+2) * 12); // +2px for border
+    var editorHeight = ctrl.pianoRoll.octaves() * (octaveHeight+2);
+    var totalNotes = ctrl.pianoRoll.octaves() * 12;
+    var rowHeight = editorHeight / totalNotes;
+
+    var notes = ctrl.pianoRoll.track().notes;
+    return _.map(notes, function (note) {
+        // Subtract 12 because this doesn't support octaves below 0 (i.e. MIDI note 12)
+        var pitchPosition = ((note.midiValue-12) * rowHeight)+2;
+
+        var style = {
+            bottom: pitchPosition + "px",
+            left: beatWidth * note.beat + "px",
+            width: beatWidth * note.duration + "px",
+            height: noteHeight + "px"
+        };
+
+        var noteName = note.pitch+note.octave;
+
+        var noteElement = m('note', {
+            style: style,
+            pitch: note.pitch,
+            octave: note.octave,
+            duration: note.duration,
+            title: noteName+", "+note.duration
+        });
+
+        // TODO: add click+drag handlers for noteElement
+
+        return noteElement;
+    });
+};
+
 var makeMidiEditor = function(ctrl) {
     return m('midi_editor',[
         m('layout', makeOctaves(ctrl, makeRows)),
-        m('overlay')
+        m('overlay', makeMidiNotes(ctrl))
     ]);
 };

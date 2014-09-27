@@ -95,6 +95,7 @@ midi_editor measure beat:hover {
 
 midi_editor note {
     position: absolute;
+    display: inline-block;
     background: deepskyblue;
     border: 1px solid black;
 }

@@ -3,9 +3,12 @@
 var PianoRoll = function(midiData) {
     var self = this;
 
-    this.octaves = m.prop(7);
+    // TODO: use starting and ending octaves instead of octave count
+    //this.lowestOctave = m.prop(0);
+    //this.highestOctave = m.prop(4);
+    this.octaves = m.prop(5);
     this.measures = m.prop(6);
-    this.minimumMeasures = m.prop(1);
+    this.minimumMeasures = m.prop(4);
     this.beatsPerMeasure = m.prop(4);
     this.tempo = m.prop(120);
 
@@ -44,11 +47,11 @@ var PianoRoll = function(midiData) {
     };
     this.measureWidth = function() {
         var beatBorderWidth = 1;
-        return (self.beatWidth()+beatBorderWidth)*self.beatsPerMeasure();
+        return (self.beatWidth() + beatBorderWidth) * self.beatsPerMeasure();
     };
     this.rowWidth = function() {
         var measureBorderWidth = 2;
-        return (self.measureWidth()+measureBorderWidth) * self.measures();
+        return (self.measureWidth() + measureBorderWidth) * self.measures();
     };
     this.rowHeight = function() {
         return (self.vZoom() / 100) * 30;

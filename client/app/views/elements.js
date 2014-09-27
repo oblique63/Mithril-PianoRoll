@@ -42,3 +42,7 @@ var table = function(rowData) {
 
     return m('table', rows);
 };
+
+var _getPosition = function(selector) {
+    return document.querySelector(selector).getBoundingClientRect();
+};
