@@ -13,21 +13,21 @@ var makeTransport = function(ctrl) {
         slider(ctrl, {
             name: 'Volume',
             id: 'volume_level',
-            onchange: m.withAttr('value', ctrl.volume),
+            oninput: m.withAttr('value', ctrl.volume),
             value: ctrl.volume(),
             max: 100
         }),
         slider(ctrl, {
             name: 'Horizontal Zoom',
             id: 'horizontalZoomSelector',
-            onchange: m.withAttr('value', ctrl.pianoRoll.hZoom),
+            oninput: m.withAttr('value', ctrl.pianoRoll.hZoom),
             value: ctrl.pianoRoll.hZoom(),
             min: 30
         }),
         slider(ctrl, {
             name: 'Vertical Zoom',
             id: 'verticalZoomSelector',
-            onchange: m.withAttr('value', ctrl.pianoRoll.vZoom),
+            oninput: m.withAttr('value', ctrl.pianoRoll.vZoom),
             value: ctrl.pianoRoll.vZoom(),
             min: 40
         }),
