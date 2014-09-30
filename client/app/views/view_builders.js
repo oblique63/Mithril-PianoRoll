@@ -29,7 +29,7 @@ var makeTransport = function(ctrl) {
             id: 'verticalZoomSelector',
             oninput: m.withAttr('value', ctrl.pianoRoll.vZoom),
             value: ctrl.pianoRoll.vZoom(),
-            min: 40
+            min: 44
         }),
         button('Remove Measure', ctrl.pianoRoll.removeMeasure),
         button('Add Measure', ctrl.pianoRoll.addMeasure)
